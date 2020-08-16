@@ -19,10 +19,10 @@ public class TC_7 extends ReusableMethod{
 		explicitwait(mySettings);
 		mySettings.click();
 			//Download Login History
-		/*
+		implicitwait();
 		WebElement linkPersonal = driver.findElement(By.xpath("//div[@id='PersonalInfo']//a[@class='header setupFolder']"));
 		explicitwait(linkPersonal);
-		linkPersonal.click();
+		clickByJSE(linkPersonal);
 		Thread.sleep(1000);
 		WebElement loginHx = driver.findElement(By.xpath("//a[@id='LoginHistory_font']"));
 		explicitwait(loginHx);
@@ -30,12 +30,12 @@ public class TC_7 extends ReusableMethod{
 		WebElement downloadLoginHx = driver.findElement(By.xpath("//a[contains(text(),'Download login history for last six months, ')]"));
 		explicitwait(downloadLoginHx);
 		downloadLoginHx.click();
-		System.out.println("Pass. .csv file downloaded.");
-		*/
+		System.out.println("Pass:\t\t.csv file downloaded.");
+		Thread.sleep(3000);
 		
-		//Thread.sleep(4000);
+		
 		// Display Layout - add Tabs
-		/*
+		
 		WebElement linkDisplayLayout = driver.findElement(By.xpath("//div[@id='DisplayAndLayout']//a[@class='header setupFolder']"));
 		explicitwait(linkDisplayLayout);
 		linkDisplayLayout.click();
@@ -52,19 +52,19 @@ public class TC_7 extends ReusableMethod{
 		WebElement selectFromBox = driver.findElement(By.xpath("//select[@id='duel_select_0']"));
 		explicitwait(selectFromBox);
 		WebElement eleReport = driver.findElement(By.xpath("//option[@value='report']"));
+		explicitwait(eleReport);
 		eleReport.click();
-				
-		//((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoViews()", driver.findElement(By.xpath("//option[@value='report']")));
-		
 		WebElement eleAdd = driver.findElement(By.xpath("//a[@id='duel_select_0_right']"));
+		explicitwait(eleAdd);
 		eleAdd.click();
 		WebElement saveButton = driver.findElement(By.xpath("//input[@name='save']"));
+		explicitwait(saveButton);
 		saveButton.click();
-		System.out.println("Pass.  Reports added.");
-		Thread.sleep(4000);
-		*/
-
+		System.out.println("Pass:\t\tReports added.");
+		Thread.sleep(3000);
+			
 		//EmailSetUp
+		
 		WebElement emailSetUp = driver.findElement(By.xpath("//div[@id='EmailSetup']//a[@class='header setupFolder']"));
 		explicitwait(emailSetUp, 15);
 		emailSetUp.click();
@@ -80,10 +80,27 @@ public class TC_7 extends ReusableMethod{
 		emailPH.clear();
 		emailPH.sendKeys("janice.wmrath@tekarch.net");
 		WebElement bccRadioButt = driver.findElement(By.xpath("//input[@id='auto_bcc1']"));
+		explicitwait(bccRadioButt);
 		bccRadioButt.click();
-		WebElement saveButton = driver.findElement(By.xpath("//input[@value=' Save ']"));
-		saveButton.click();
+		WebElement saveButton1 = driver.findElement(By.xpath("//input[@name='save']"));
+		explicitwait(saveButton1);
+		clickByJSE(saveButton1);
+		Thread.sleep(1000);
+		alertAccept();
+		System.out.println("Pass:\t\tMy Settings page is displayed.");
+		Thread.sleep(3000);
+		//Calendar&remainders
 		
+		WebElement Calendar = driver.findElement(By.xpath("//div[@id='CalendarAndReminders']//a[@class='header setupFolder']"));
+		explicitwait(Calendar);
+		Calendar.click();
+		WebElement remainderLink = driver.findElement(By.xpath("//a[@id='Reminders_font']"));
+		explicitwait(remainderLink);
+		remainderLink.click();
+		WebElement testLink = driver.findElement(By.xpath("//input[@value='Open a Test Reminder']"));
+		explicitwait(testLink);
+		testLink.click();
+		System.out.println("Pass:\t\tEvent Window Opened.");
 		
 	}
 

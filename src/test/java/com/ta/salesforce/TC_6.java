@@ -17,13 +17,12 @@ public class TC_6 extends ReusableMethod{
 		WebElement myProfile = driver.findElement(By.xpath("//a[@title='My Profile']"));
 		explicitwait(myProfile);
 		myProfile.click();
-		Thread.sleep(2000);
+		implicitwait();
 		
 		//Edit Last Name
-		/* 
 		WebElement editModeratorButton = driver.findElement(By.xpath("//a[@id='moderatorMutton']"));
 		explicitwait(editModeratorButton);
-		editModeratorButton.click();
+		clickByJSE(editModeratorButton);
 		WebElement editProfileLink = driver.findElement(By.xpath("//a[@title='Edit Profile']"));
 		explicitwait(editProfileLink);
 		editProfileLink.click();
@@ -35,34 +34,42 @@ public class TC_6 extends ReusableMethod{
 		explicitwait(AboutTab);
 		AboutTab.click();
 		WebElement lastNamePH = driver.findElement(By.xpath("//input[@id='lastName']"));
+		explicitwait(lastNamePH);
 		lastNamePH.clear();
-		lastNamePH.sendKeys("Johnson");
+		lastNamePH.sendKeys("Rath");
 		WebElement saveAll = driver.findElement(By.xpath("//input[@value='Save All']"));
+		explicitwait(saveAll);
 		saveAll.click();
 		driver.switchTo().defaultContent();
 		WebElement uNameNode = driver.findElement(By.xpath("//span[@id='tailBreadcrumbNode']"));
-		System.out.println("Changed last name: "+ uNameNode.getText() +"is Displayed");
-		*/
-		
+		explicitwait(uNameNode);
+		System.out.println("Pass\nChanged last name: "+ uNameNode.getText() +"is Displayed");
+		Thread.sleep(3000);		
 		//Post Text
-//		Thread.sleep(2000);
-//		WebElement postLink = driver.findElement(By.xpath("//a[@title='Post']"));
-//		postLink.click();
-//		WebElement postFrame = driver.findElement(By.xpath("//iframe[1]"));
-//		switchFrame(driver, postFrame);
-//		WebElement postBody = driver.findElement(By.xpath("//html[1]/body[1]"));
-//		postBody.click();
-//		postBody.sendKeys("Posted text content");
-//		driver.switchTo().defaultContent();
-	//	WebElement shareButton = driver.findElement(By.xpath("//input[@id='publishersharebutton']"));
-		//shareButton.click();
-		//System.out.println("Pass. Text posted.");
-				
+
+		WebElement postLink = driver.findElement(By.xpath("//a[@title='Post']"));
+		explicitwait(postLink);
+		postLink.click();
+		WebElement postFrame = driver.findElement(By.xpath("//iframe[1]"));
+		switchFrame(driver, postFrame);
+		WebElement postBody = driver.findElement(By.xpath("//html[1]/body[1]"));
+		explicitwait(postBody);
+		postBody.click();
+		postBody.sendKeys("Posted text content");
+		driver.switchTo().defaultContent();
+		WebElement shareButton = driver.findElement(By.xpath("//input[@id='publishersharebutton']"));
+		explicitwait(shareButton);
+		shareButton.click();
+		System.out.println("Pass:\t\tText posted.");
+		Thread.sleep(3000);
+		
 		//File upload
-		/*
+		
 		WebElement fileLink = driver.findElement(By.xpath("//a[@id='publisherAttachContentPost']"));
 		explicitwait(fileLink);
 		fileLink.click();
+		WebElement tablePanel = driver.findElement(By.xpath("//div[@class='panelBody clear']//table[@class='chatterPublisherActionsContainer']"));
+		explicitwait(tablePanel);
 		WebElement uploadFileButton = driver.findElement(By.xpath("//a[@id='chatterUploadFileAction']"));
 		explicitwait(uploadFileButton, 15);
 		uploadFileButton.click();
@@ -70,11 +77,14 @@ public class TC_6 extends ReusableMethod{
 		explicitwait(chooseFileButton);
 		chooseFileButton.sendKeys("C:\\Users\\Danielle's Ideapad\\eclipse-workspace\\jpeg\\S3Q1.jpg");
 		explicitwait(chooseFileButton);
-		shareButton.click();
-		System.out.println("Pass.  Selected file is posted.");
-		*/
+		WebElement shareButton1 = driver.findElement(By.xpath("//input[@id='publishersharebutton']"));
+		explicitwait(shareButton1);
+		shareButton1.click();
+		System.out.println("Pass\t\tSelected file is posted.");
+		Thread.sleep(3000);
 		
 		//Add photo link
+		
 		WebElement elePhoto = driver.findElement(By.xpath("//div[@id='photoSection']"));
 		explicitwait(elePhoto);
 		mouseHover(driver, elePhoto);

@@ -1,6 +1,12 @@
 package com.ta.salesforce;
 
+import java.awt.Window;
+import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,6 +14,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -57,6 +64,11 @@ public class ReusableMethod {
 		
 	}
 	
+	public static void implicitwait () {
+		
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	}
+	
 	/*
 	public static void eleClickable (WebElement ele) {
 		WebDriverWait wait = new WebDriverWait(driver, 15);
@@ -88,6 +100,12 @@ public class ReusableMethod {
 		
 	}
 	
+	public static void userMenuButton() {
+		WebElement eleUserMenuButton = driver.findElement(By.xpath("//span[@id='userNavLabel']"));
+		explicitwait(eleUserMenuButton);
+		eleUserMenuButton.click();
+	}
+	
 	public static void printText(WebElement obj) throws Exception{
 		Thread.sleep(1000);
 		if (obj.isDisplayed())
@@ -112,6 +130,52 @@ public class ReusableMethod {
 		Actions ac = new Actions (driver);
 		ac.moveToElement(ele);
 		
+	}
+	
+	public static void switchWindow (int windowIndex) {
+		
+		ArrayList<String> windowTabs = new ArrayList (driver.getWindowHandles());
+		driver.switchTo().window(windowTabs.get(windowIndex));
+		
+	}
+	
+	public static void switchOriginWindow () {
+		
+		ArrayList<String> windowTabs = new ArrayList (driver.getWindowHandles());
+		driver.switchTo().window(windowTabs.get(0));
+	}
+	
+	public static void selectDropDownList (WebElement eleDropDownList, String text) {
+		
+		
+		Select select = new Select(eleDropDownList);
+		select.selectByVisibleText(text);
+	}
+	
+	public static void clickByJSE (WebElement ele) {
+		
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("arguments[0].click()", ele);
+		
+	}
+	
+	public static void alertAccept () {
+		
+		Alert alert = driver.switchTo().alert();
+		alert.accept();
+	}
+	
+	public static void Logout() {
+		userMenuButton();
+		WebElement logoutButton = driver.findElement(By.xpath("//a[contains(text(),'Logout')]"));
+		explicitwait(logoutButton);
+		logoutButton.click();
+		
+	}
+	
+	public static void scroll(WebElement ele) {
+		
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView()", ele);
 	}
 	
 	

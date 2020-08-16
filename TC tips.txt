@@ -1,0 +1,13 @@
+//TC 6  how to crop photo  not running smoothly with all cases watch video at 29min
+
+TC 10 	Solve ElementNotInteractableException using javascript
+	Using JavaScript click it worked but we bypassed the actual reason which may be a potential bug or a bad UX design. 
+	When we enter search keyword then google shows auto suggestions and HIDES THE SEARCH BUTTON. 
+	As per Official Selenium Doc – ElementClickInterceptedException Indicates that a click could not be properly executed 
+	because the target element was obscured in some way. This exception class extends ElementNotInteractableException class.
+		WebElement newTab = driver.findElement(By.xpath("//div[@class='pbHeader']//td[2]//input"));
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("arguments[0].click()", newTab);
+TC15  List use to .getOptions of dropdown List.
+
+
